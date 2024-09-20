@@ -19,6 +19,10 @@ const routes: Routes = [
                 path: 'book-details',
                 loadChildren: () => import('./book-details/book-details.routes'),
             },
+            {
+                path: 'author-details',
+                loadChildren: () => import('./author-details/author-details.routes'),
+            },
         ]
     },
 ];
