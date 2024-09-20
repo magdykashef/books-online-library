@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-body row">
                     <div class="col">
-                        <a routerLink='../book-details'>
+                        <a routerLink='../book-details' [queryParams]="{workKey: work.key.split('/')[2]}">
                             <img height="200px" width="200px" [src]="work.cover.length ? work.cover : '/assets/img/placeholder-image.jpg'" alt="Book Cover">
                         </a>
                     </div>
@@ -14,14 +14,14 @@
                     <div class="col d-flex flex-column justify-content-between">
                         <div>
                             <p class="card-text mb-1">{{work.first_publish_year}}</p>
-                            <p class="card-title mb-1"><a routerLink='../book-details'>{{work.title | titlecase}}</a></p>
+                            <p class="card-title mb-1"><a routerLink='../book-details' [queryParams]="{workKey: work.key.split('/')[2]}">{{work.title | titlecase}}</a></p>
                             @for (author of work.authors; track $index) {
                             <p class="card-text mb-1"><a routerLink='../author-details'>{{author.name | titlecase}}</a></p>
                             }
                         </div>
 
                         <div>
-                            <a routerLink='../book-details'>more</a>
+                            <a routerLink='../book-details' [queryParams]="{workKey: work.key.split('/')[2]}">more</a>
                             <span class="mx-1">|</span>
                             <a routerLink='../wish-list'>wish list</a>
                         </div>
