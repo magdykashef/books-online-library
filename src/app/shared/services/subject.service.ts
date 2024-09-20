@@ -26,7 +26,7 @@ export class SubjectService {
 
   getWorksDetails(key: string): Observable<SubjectResponse> {
     return this.getWorksOfSubject$.pipe(
-      map(res => ({...res, works: res.works.filter(work => work.key.includes(key))}))
+      map(res => ({...res, works: res.works.filter(work => work.key === key)}))
     )
   }
 }
