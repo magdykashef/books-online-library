@@ -15,6 +15,10 @@ const routes: Routes = [
                 path: 'home',
                 loadChildren: () => import('./home/home-routes'),
             },
+            {
+                path: 'book-details',
+                loadChildren: () => import('./book-details/book-details.routes'),
+            },
         ]
     },
 ];
