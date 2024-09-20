@@ -1,28 +1,29 @@
 <div class="container my-4">
-  <h1 class="my-4">{{'Book title place holder' | titlecase}}</h1>
+  <h1 class="my-4">{{bookDetails()?.works[0].title | titlecase}}</h1>
   <div class="row">
     <div class="col-6">
       <a routerLink='../book-details'>
-        <img height="300px" width="300px" [src]="'/assets/img/placeholder-image.jpg'" alt="Book Cover">
+        <img 
+          height="300px" 
+          width="300px" 
+          [src]="bookDetails()?.works[0].cover?.length ? 
+          bookDetails()?.works[0].cover : '/assets/img/placeholder-image.jpg'" 
+          alt="Book Cover">
       </a>
     </div>
 
     <div class="col-3 d-flex flex-column justify-content-between">
       <ul>
-        <li class="card-text mb-1">{{ 2002 }}</li>
-        <li class="card-title mb-1">{{'work title' | titlecase}}</li>
+        <li class="card-text mb-1">{{ bookDetails()?.works[0].first_publish_year }}</li>
+        <li class="card-title mb-1">{{ bookDetails()?.works[0].title | titlecase}}</li>
 
-        @for (author of ' '.repeat(3); track $index) {
-        <li class="card-text mb-1">{{'author name' | titlecase}}</li>
+        @for (author of bookDetails()?.works[0].authors; track $index) {
+        <li class="card-text mb-1">{{author.name| titlecase}}</li>
         }
 
         <li class="card-text mb-1">
           <span>Edition Count</span>&nbsp;
-          <span>{{ 7 }}</span>
-        </li>
-        <li class="card-text mb-1">
-          <span>pages</span>&nbsp;
-          <span>{{ 250 }}</span>
+          <span>{{ bookDetails()?.works[0].edition_count }}</span>
         </li>
       </ul>
 
