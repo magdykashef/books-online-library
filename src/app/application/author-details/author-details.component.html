@@ -1,1 +1,31 @@
-<p>author-details works!</p>
+<div class="container my-4">
+  <h1 class="my-4">{{authorDetails().docs[0].name| titlecase}}</h1>
+  <div class="row">
+    <div class="col-6">
+      <a routerLink='../book-details'>
+        <img height="300px" width="300px" [src]="'/assets/img/placeholder-image.jpg'" alt="Book Cover">
+      </a>
+    </div>
+
+    <div class="col-6 d-flex flex-column justify-content-between">
+      <ul>
+        @if(authorDetails().docs[0].birth_date){
+        <li class="card-text mb-1">{{ authorDetails().docs[0].birth_date | date }}</li>
+        }
+        @if(authorDetails().docs[0].top_work){
+        <li class="card-title mb-1">{{ authorDetails().docs[0].top_work | titlecase}}</li>
+        }
+        @if(authorDetails().docs[0].work_count){
+        <li class="card-title mb-1">{{ authorDetails().docs[0].work_count }}</li>
+        }
+
+      </ul>
+
+      <div>
+        @for (subject of authorDetails().docs[0].top_subjects; track $index) {
+        <span class="card-text me-3 px-2 rounded bg-secondary text-white">{{ subject | titlecase }}</span>
+        }
+      </div>
+    </div>
+  </div>
+</div>
